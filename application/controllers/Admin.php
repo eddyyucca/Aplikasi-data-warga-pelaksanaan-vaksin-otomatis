@@ -24,8 +24,8 @@ class Admin extends CI_Controller
         $data['nama'] = $this->session->userdata('nama_alumni');
         $data['data'] = false;
         $data['judul'] = 'Dashboard';
-        $data['jumlah_alumni'] = $this->alumni_m->jumlah_alumni();
-        $data['jumlah_lowongan'] = $this->alumni_m->jumlah_lowongan();
+        // $data['jumlah_alumni'] = $this->alumni_m->jumlah_alumni();
+        // $data['jumlah_lowongan'] = $this->alumni_m->jumlah_lowongan();
         // $data['jml_alumni'] = $this->pegawai_m->jumlah_pegawai();
         // $data['jml_jurusan'] = $this->pegawai_m->jumlah_jurusan();
         // $data['jml_absen'] = $this->pegawai_m->jumlah_absen();
