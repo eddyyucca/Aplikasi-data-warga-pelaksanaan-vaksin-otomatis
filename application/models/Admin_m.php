@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Alumni_m extends CI_Model
+class Admin_m extends CI_Model
 {
     public function jumlah_alumni()
     {
@@ -51,13 +51,9 @@ class Alumni_m extends CI_Model
             return 0;
         }
     }
-    public function get_all_alumni()
+    public function get_all_vaksin()
     {
-        $this->db->join('akun', 'akun.telpon = alumni.telpon');
-        $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
-        // $this->db->join('bidang', 'bidang.id_bidang = alumni.bidang');
-        $this->db->order_by('id_alumni', 'DESC');
-        return $this->db->get('alumni')->result();
+        return $this->db->get('vaksin')->result();
     }
     public function get_status($id_alumni)
     {
@@ -85,12 +81,11 @@ class Alumni_m extends CI_Model
         $this->db->order_by('lowongan.id_lowongan', 'DESC');
         return $this->db->get()->result();
     }
-    public function get_row_alumni($telpon)
+    public function get_row_vaksin($id_vaksin)
     {
-        $this->db->where('telpon', $telpon);
-        $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
-
-        return $this->db->get('alumni')->row();
+        $this->db->where('id_vaksin', $id_vaksin);
+        // $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
+        return $this->db->get('vaksin')->row();
     }
     public function get_row_alumni_nip($nip)
     {

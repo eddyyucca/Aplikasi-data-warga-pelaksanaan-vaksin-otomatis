@@ -38,9 +38,9 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="Logo Pemda-Tapin">
+            <img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="Logo">
           </div>
-          <div class="sidebar-brand-text mx-3">BKK SMK</div>
+          <div class="sidebar-brand-text mx-3">Vaksin</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -61,7 +61,7 @@
           </a>
           <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/jurusan') ?>">Jurusan</a>
+              <a class="collapse-item" href="<?= base_url('admin/vaksin') ?>">Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/alumni') ?>">Data Pencari Kerja</a>
             </div>
           </div>
