@@ -110,4 +110,12 @@ class Auth extends CI_Controller
         $this->session->sess_destroy();
         redirect('auth');
     }
+
+    public function daftar()
+    {
+        $data['judul'] = 'Daftar Penerima Vaksin';
+        $this->load->view('auth/template_auth/header', $data);
+        $this->load->view('auth/daftar', $data);
+        $this->load->view('auth/template_auth/footer');
+    }
 }

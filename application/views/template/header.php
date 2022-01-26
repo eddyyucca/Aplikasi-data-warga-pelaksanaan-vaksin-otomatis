@@ -63,6 +63,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('admin/vaksin') ?>">Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/dokter') ?>">Data Dokter</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga') ?>">Data Warga</a>
             </div>
           </div>
         </li>
@@ -71,13 +72,12 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Pengajuan" aria-expanded="true" aria-controls="Pengajuan">
             <i class="fas fa-database"></i>
-            <span>Lowongan Kerja</span>
+            <span>Laporan</span>
           </a>
           <div id="Pengajuan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/data_lowongan') ?>">Lowongan Aktif</a>
-              <a class="collapse-item" href="<?= base_url('admin/lowongan_lama') ?>">Lowongan Habis</a>
-              <a class="collapse-item" href="<?= base_url('admin/pengajuan_kerja') ?>">Pengajuan Kerja</a>
+              <a class="collapse-item" href="<?= base_url('admin/w_belum_vaksin') ?>">Sudah Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/w_belum_vaksin') ?>">Belum Vaksin</a>
             </div>
           </div>
         </li>

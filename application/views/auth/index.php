@@ -1,4 +1,4 @@
-<body class="bg-gradient-primary">
+<body class="bg-gradient-success">
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
         <div class="container">
             <!-- Outer Row -->
