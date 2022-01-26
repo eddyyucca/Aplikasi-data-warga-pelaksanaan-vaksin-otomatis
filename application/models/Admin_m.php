@@ -59,6 +59,12 @@ class Admin_m extends CI_Model
     {
         return $this->db->get('dokter')->result();
     }
+    public function get_row_dokter($id_dokter)
+    {
+        $this->db->where('id_dokter', $id_dokter);
+
+        return $this->db->get('dokter')->row();
+    }
     public function get_status($id_alumni)
     {
 

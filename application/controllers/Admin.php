@@ -67,6 +67,14 @@ class Admin extends CI_Controller
         $this->load->view('admin/vaksin/input_vaksin', $data);
         $this->load->view('template/footer');
     }
+    public function tambah_dokter()
+    {
+        $data['judul'] = 'Data Dokter';
+        $data['nama'] = $this->session->userdata('nama');
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/dokter/input_dokter', $data);
+        $this->load->view('template/footer');
+    }
     public function edit_vaksin($id_vaksin)
     {
         $data['judul'] = 'Data vaksin';
@@ -85,6 +93,16 @@ class Admin extends CI_Controller
 
         $this->load->view('template/header', $data);
         $this->load->view('admin/vaksin/update_stok', $data);
+        $this->load->view('template/footer');
+    }
+    public function edit_dokter($id_dokter)
+    {
+        $data['judul'] = 'Data Dokter';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_row_dokter($id_dokter);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/dokter/edit_dokter', $data);
         $this->load->view('template/footer');
     }
 
@@ -122,6 +140,26 @@ class Admin extends CI_Controller
             return redirect('admin/vaksin');
         }
     }
+    public function proses_update_dokter($id_dokter)
+    {
+        $this->form_validation->set_rules('nama_dokter', 'Nama Dokter', 'required');
+        // $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $data['data'] = $this->admin_m->get_row_vaksin($id_dokter);
+            $data['judul'] = 'Data vaksin';
+            $data['nama'] = $this->session->userdata('nama');
+            $this->load->view('template/header', $data);
+            $this->load->view('admin/dokter/edit_dokter', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = array(
+                'nama_dokter' => $this->input->post('nama_dokter'),
+            );
+            $this->db->where('id_dokter', $id_dokter);
+            $this->db->update('dokter', $data);
+            return redirect('admin/dokter');
+        }
+    }
     public function proses_input_vaksin()
     {
         $this->form_validation->set_rules('nama_vaksin', 'Vaksin', 'required');
@@ -142,72 +180,39 @@ class Admin extends CI_Controller
             return redirect('admin/vaksin');
         }
     }
+    public function proses_input_dokter()
+    {
+        $this->form_validation->set_rules('nama_dokter', 'DOkter', 'required');
+        // $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        if ($this->form_validation->run() == FALSE) {
+
+            $data['judul'] = 'Data Dokter';
+            $data['nama'] = $this->session->userdata('nama');
+            $this->load->view('template/header', $data);
+            $this->load->view('admin/dokter/input_dokter', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = array(
+                'nama_dokter' => $this->input->post('nama_dokter'),
+            );
+            $this->db->insert('dokter', $data);
+            return redirect('admin/dokter');
+        }
+    }
     public function hapus_vaksin($id_vaksin)
     {
         $this->db->where('id_vaksin', $id_vaksin);
         $this->db->delete('vaksin');
         return redirect('admin/vaksin');
     }
-    public function hapus_lowongan($id_lowongan)
+    public function hapus_dokter($id_dokter)
     {
-        $this->db->where('id_lowongan', $id_lowongan);
-        $this->db->delete('lowongan');
-        return redirect('admin/data_lowongan');
+        $this->db->where('id_dokter', $id_dokter);
+        $this->db->delete('dokter');
+        return redirect('admin/dokter');
     }
 
-    // vaksin end
-    // -------------------- //
 
-
-    // Pegawai
-    // -------------------- //
-    public function buat_lowongan_baru()
-    {
-        $data['judul'] = 'Data Pegawai';
-        $data['nama'] = $this->session->userdata('nama');
-        // $data['data'] = $this->pegawai_m->get_all_pegawai();
-
-        $this->load->view('template/header', $data);
-        $this->load->view('admin/lowongan/input_lowongan', $data);
-        $this->load->view('template/footer');
-    }
-    public function edit_lowongan($id_lowongan)
-    {
-        $data['judul'] = 'Data Pegawai';
-        $data['nama'] = $this->session->userdata('nama');
-        $data['data'] = $this->lowongan_m->get_row_lowongan($id_lowongan);
-
-        $this->load->view('template/header', $data);
-        $this->load->view('admin/lowongan/edit_lowongan', $data);
-        $this->load->view('template/footer');
-    }
-
-    public function proses_input_lowongan()
-    {
-        $this->form_validation->set_rules('nama_lowongan', 'Nama Lowongan', 'required');
-        $this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan');
-        $this->form_validation->set_rules('batas_tanggal', 'Batas Tanggal');
-        $this->form_validation->set_rules('isi_lowongan', 'Isi Lowongan');
-        if ($this->form_validation->run() == FALSE) {
-            $data['judul'] = 'Lowongan Baru';
-            $data['nama'] = $this->session->userdata('nama');
-            $data['vaksin'] = $this->admin_m->get_all_vaksin();
-
-            $this->load->view('template/header', $data);
-            $this->load->view('admin/lowongan/input_lowongan', $data);
-            $this->load->view('template/footer');
-        } else {
-            $data = array(
-                'nama_lowongan' => $this->input->post('nama_lowongan'),
-                'nama_perusahaan' => $this->input->post('nama_perusahaan'),
-                'batas_tanggal' => $this->input->post('batas_tanggal'),
-                'isi_lowongan' => $this->input->post('isi_lowongan'),
-            );
-
-            $this->db->insert('lowongan', $data);
-            return redirect('admin/data_lowongan');
-        }
-    }
     public function proses_update_lowongan($id_lowongan)
     {
         $this->form_validation->set_rules('nama_lowongan', 'Nama Lowongan', 'required');

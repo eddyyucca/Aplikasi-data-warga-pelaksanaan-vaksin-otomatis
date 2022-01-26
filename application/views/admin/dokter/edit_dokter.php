@@ -9,15 +9,11 @@
             <div class="row">
                 <div class="container-fluid">
                     <?= validation_errors() ?>
-                    <form action="<?= base_url('admin/proses_update_vaksin/' . $data->id_vaksin)  ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?= base_url('admin/proses_update_dokter/' . $data->id_dokter)  ?>" method="POST" enctype="multipart/form-data">
                         <table class="table">
                             <tr>
                                 <td width=20%>Nama Vaksin</td>
-                                <td><input type="text" name="nama_vaksin" class="form-control" required placeholder="Nama Vaksin" value="<?= $data->nama_vaksin ?>"></td>
-                            </tr>
-                            <tr>
-                                <td width=20%>Jumlah Vaksin</td>
-                                <td><input type="number" name="jumlah" value="<?= $data->jumlah ?>" class="form-control" required placeholder="Jumlah Vaksin"></td>
+                                <td><input type="text" name="nama_dokter" class="form-control" required placeholder="Nama Dokter" value="<?= $data->nama_dokter ?>"></td>
                             </tr>
                             <tr>
                                 <td>
