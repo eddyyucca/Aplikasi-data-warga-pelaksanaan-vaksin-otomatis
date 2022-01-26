@@ -41,6 +41,24 @@ class Admin extends CI_Controller
         $this->load->view('admin/vaksin/data_vaksin', $data);
         $this->load->view('template/footer');
     }
+    public function dokter()
+    {
+        $data['judul'] = 'Data Dokter';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_all_dokter();
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/dokter/data_dokter', $data);
+        $this->load->view('template/footer');
+    }
+    public function cetak_data_vaksin()
+    {
+        $data['judul'] = 'Data vaksin';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_all_vaksin();
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/vaksin/cetak_data_vaksin', $data);
+        // $this->load->view('template/footer');
+    }
     public function tambah_vaksin()
     {
         $data['judul'] = 'Data vaksin';

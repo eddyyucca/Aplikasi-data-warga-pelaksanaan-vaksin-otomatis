@@ -12,7 +12,8 @@
                                     <div class="p-5">
                                         <div class="text-center">
 
-                                            <img src="<?= base_url('assets/logo.png') ?>" width="100px">
+                                            <img src="<?= base_url('assets/logo2.png') ?>" width="100px">
+                                            <br>
                                             <h3>SMKN 1 TAPIN SELATAN</h3>
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
@@ -32,9 +33,14 @@
                                                 <input type="password" class="form-control" name="password" placeholder="Password">
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            <button type="submit" class="btn btn-success btn-user btn-block">
                                                 Masuk
                                             </button>
+                                            <div class="d-flex justify-content-center mb-4 mt-3">
+                                                <small>
+                                                    <a href="<?= base_url('auth/daftar') ?>">Daftar Vaksin</a>
+                                            </div>
+                                            </small>
                                         </form>
                                         <hr>
                                     </div>

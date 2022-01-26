@@ -15,8 +15,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Vaksin</th>
-                            <th>Jumlah</th>
+                            <th>Nama Dokter</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -27,11 +26,9 @@
                             <tr>
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nama_vaksin; ?></td>
-                                <td><?= $x->jumlah; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_vaksin/') . $x->id_vaksin; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_vaksin/') . $x->id_vaksin; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?= base_url('admin/update_vaksin/') . $x->id_vaksin; ?>" class="btn btn-primary">Update Stok</a>
+                                    <a href="<?= base_url('admin/delete_dokter/') . $x->id_dokter; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/edit_dokter/') . $x->id_dokter; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -55,6 +55,10 @@ class Admin_m extends CI_Model
     {
         return $this->db->get('vaksin')->result();
     }
+    public function get_all_dokter()
+    {
+        return $this->db->get('dokter')->result();
+    }
     public function get_status($id_alumni)
     {
 

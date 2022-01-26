@@ -34,11 +34,11 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="Logo">
+            <img src="<?= base_url('assets/logo2.png'); ?>" width="50" height="60" alt="Logo">
           </div>
           <div class="sidebar-brand-text mx-3">Vaksin</div>
         </a>
