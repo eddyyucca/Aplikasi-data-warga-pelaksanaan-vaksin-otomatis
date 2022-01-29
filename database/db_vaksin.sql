@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jan 2022 pada 13.50
+-- Waktu pembuatan: 29 Jan 2022 pada 12.40
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -36,6 +36,13 @@ CREATE TABLE `akun` (
   `nik` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `akun`
+--
+
+INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`, `nik`) VALUES
+(25, '', '52a0aa51a138e8ca1973704486a52961', 'user', 'aktif', '111');
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +70,8 @@ INSERT INTO `dokter` (`id_dokter`, `nama_dokter`) VALUES
 CREATE TABLE `permintaan_vaksin` (
   `in_permintaan` int(11) NOT NULL,
   `id_warga` varchar(11) NOT NULL,
-  `tanggal` varchar(20) NOT NULL
+  `tanggal` varchar(20) NOT NULL,
+  `status_vaksin_hari` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -83,7 +91,8 @@ CREATE TABLE `vaksin` (
 --
 
 INSERT INTO `vaksin` (`id_vaksin`, `nama_vaksin`, `jumlah`) VALUES
-(1, 'sinovac', '330');
+(1, 'sinovac', '330'),
+(3, 'Moderna', '1000');
 
 -- --------------------------------------------------------
 
@@ -99,8 +108,16 @@ CREATE TABLE `warga` (
   `alamat` text NOT NULL,
   `telpon` varchar(20) NOT NULL,
   `status` text NOT NULL,
-  `vaksin` varchar(11) NOT NULL
+  `jk` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `warga`
+--
+
+INSERT INTO `warga` (`id_warga`, `nik`, `nama`, `ttl`, `alamat`, `telpon`, `status`, `jk`) VALUES
+(1, '111', 'eddy adha saputra', 'banjarbaru-2022-01-1', 'assaas', '081250653005', '1', 'Laki-Laki'),
+(2, '111', 'asas', 'banjarbaru 2022-01-0', 'a', '081250653005', '2', 'Laki-Laki');
 
 --
 -- Indexes for dumped tables
@@ -144,7 +161,7 @@ ALTER TABLE `warga`
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `dokter`
@@ -162,13 +179,13 @@ ALTER TABLE `permintaan_vaksin`
 -- AUTO_INCREMENT untuk tabel `vaksin`
 --
 ALTER TABLE `vaksin`
-  MODIFY `id_vaksin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_vaksin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `warga`
 --
 ALTER TABLE `warga`
-  MODIFY `id_warga` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
