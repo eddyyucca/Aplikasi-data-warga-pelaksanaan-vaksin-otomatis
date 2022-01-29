@@ -24,10 +24,44 @@ class Admin extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['data'] = false;
         $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_all_vaksin();
 
         $this->load->view('template/header', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('template/footer', $data);
+    }
+    public function warga()
+    {
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = false;
+        $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_all_warga();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/warga/data_warga', $data);
+        $this->load->view('template/footer', $data);
+    }
+    public function warga_sdh_vaksin()
+    {
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = false;
+        $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_all_warga_sdh();
+
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/warga/data_warga_sudahvaksin', $data);
+        // $this->load->view('template/footer', $data);
+    }
+    public function warga_blm_vaksin()
+    {
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = false;
+        $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_all_warga_blm();
+
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/warga/data_warga_belumvaksin', $data);
+        // $this->load->view('template/footer', $data);
     }
 
     // vaksin

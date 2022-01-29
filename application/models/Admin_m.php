@@ -55,6 +55,20 @@ class Admin_m extends CI_Model
     {
         return $this->db->get('vaksin')->result();
     }
+    public function get_all_warga()
+    {
+        return $this->db->get('warga')->result();
+    }
+    public function get_all_warga_sdh()
+    {
+        $this->db->where('status', '2');
+        return $this->db->get('warga')->result();
+    }
+    public function get_all_warga_blm()
+    {
+        $this->db->where('status', '1');
+        return $this->db->get('warga')->result();
+    }
     public function get_all_dokter()
     {
         return $this->db->get('dokter')->result();

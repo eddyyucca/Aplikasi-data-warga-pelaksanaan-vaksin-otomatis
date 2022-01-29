@@ -1,7 +1,6 @@
 <body class="bg-gradient-success">
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
         <div class="container">
-
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="card o-hidden border-0 shadow-lg my-5 ">
@@ -19,7 +18,7 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('admin/tambah_pegawai_baru')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('auth/proses_daftar')  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>No KTP</td>
@@ -44,12 +43,12 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Alamat Saat Ini</td>
-                                                                    <td><textarea name="alamat_saat_ini" class="form-control"></textarea></td>
+                                                                    <td><textarea name="alamat" class="form-control"></textarea></td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>Telpon</td>
-                                                                    <td><input type="text" name="no_telp" class="form-control" required placeholder="Telpon"></td>
+                                                                    <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon"></td>
                                                                 </tr>
                                                                 </tr>
                                                                 <tr>

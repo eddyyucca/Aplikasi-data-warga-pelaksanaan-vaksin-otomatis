@@ -14,7 +14,7 @@
 
                                             <img src="<?= base_url('assets/logo2.png') ?>" width="100px">
                                             <br>
-                                            <h3>SMKN 1 TAPIN SELATAN</h3>
+
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
                                         </div>

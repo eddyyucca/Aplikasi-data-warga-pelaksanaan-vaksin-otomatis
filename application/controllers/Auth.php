@@ -118,4 +118,43 @@ class Auth extends CI_Controller
         $this->load->view('auth/daftar', $data);
         $this->load->view('auth/template_auth/footer');
     }
+
+    public function proses_daftar()
+    {
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'required|is_unique[warga.nik]');
+        $this->form_validation->set_rules('telpon', 'Nomor Telpon', 'required|is_unique[warga.telpon]');
+        if ($this->form_validation->run() == FALSE) {
+
+            $data['nama'] = $this->session->userdata('nama');
+            // $data['jurusan'] = $this->jurusan_m->get_all_jurusan();
+
+            $data['judul'] = 'Daftar Penerima Vaksin';
+            $this->load->view('auth/template_auth/header', $data);
+            $this->load->view('auth/daftar', $data);
+            $this->load->view('auth/template_auth/footer');
+        } else {
+            $tempat = $this->input->post('tempat');
+            $ttl =  $this->input->post('ttl');
+            $t_ttl = $tempat . " " . $ttl;
+
+            $data = array(
+                'nik' => $this->input->post('no_ktp'),
+                'nama' => $this->input->post('nama_lengkap'),
+                'jk' => $this->input->post('jk'),
+                'ttl' => $t_ttl,
+                'alamat' => $this->input->post('alamat'),
+                'telpon' => $this->input->post('telpon'),
+                'status' => "1",
+            );
+            $akun = array(
+                'nik' => $this->input->post('no_ktp'),
+                'password' => md5($this->input->post('telpon')),
+                'level' => "user",
+                'status' => "aktif",
+            );
+            $this->db->insert('warga', $data);
+            $this->db->insert('akun', $akun);
+            return redirect('auth/daftar');
+        }
+    }
 }

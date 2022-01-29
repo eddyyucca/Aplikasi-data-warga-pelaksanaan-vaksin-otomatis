@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon.png">
+  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon1.png">
   <title><?= $judul; ?></title>
 
   <!-- Custom fonts for this template-->
@@ -76,8 +76,9 @@
           </a>
           <div id="Pengajuan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/w_belum_vaksin') ?>">Sudah Vaksin</a>
-              <a class="collapse-item" href="<?= base_url('admin/w_belum_vaksin') ?>">Belum Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_blm_vaksin') ?>">Sudah Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin') ?>">Belum Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/cetak_data_vaksin') ?>">Stok Vaksin</a>
             </div>
           </div>
         </li>
