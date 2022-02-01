@@ -41,6 +41,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/warga/data_warga', $data);
         $this->load->view('template/footer', $data);
     }
+    public function tindakan_vaksin($id_warga)
+    {
+        $data['nama'] = $this->session->userdata('nama');
+        $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_row_warga($id_warga);
+        $data['vaksin'] = $this->admin_m->get_all_vaksin();
+        $data['dokter'] = $this->admin_m->get_all_dokter();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/tindakan/tindakan_vaksin', $data);
+        $this->load->view('template/footer', $data);
+    }
     public function warga_sdh_vaksin()
     {
         $data['nama'] = $this->session->userdata('nama');
@@ -83,6 +95,15 @@ class Admin extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('admin/dokter/data_dokter', $data);
         $this->load->view('template/footer');
+    }
+    public function cetak_dokter()
+    {
+        $data['judul'] = 'Data Dokter';
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_all_dokter();
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/dokter/cetak_dokter', $data);
+        // $this->load->view('template/footer');
     }
     public function cetak_data_vaksin()
     {
@@ -152,6 +173,27 @@ class Admin extends CI_Controller
         $this->db->update('vaksin', $data);
         return redirect('admin/vaksin');
     }
+    public function hasil_vaksin($id_warga)
+    {
+
+        $data = array(
+            "id_warga" => $id_warga,
+            "vaksin" => $this->input->post('vaksin'),
+            "dokter" => $this->input->post('dokter'),
+            "keterangan" => $this->input->post('keterangan'),
+            "tgl" => date('Y-m-d'),
+        );
+        $data2 = array(
+            "status" => $this->input->post('vaksin'),
+        );
+
+
+        $this->db->where('id_warga', $id_warga);
+        $this->db->update('warga', $data2);
+
+        $this->db->insert('hasil', $data);
+        return redirect('admin/warga');
+    }
 
     public function proses_update_vaksin($id_vaksin)
     {
@@ -188,6 +230,10 @@ class Admin extends CI_Controller
         } else {
             $data = array(
                 'nama_dokter' => $this->input->post('nama_dokter'),
+                'jk' => $this->input->post('jk'),
+                'ttl' => $this->input->post('ttl'),
+                'alamat' => $this->input->post('alamat'),
+                'telpon' => $this->input->post('telpon'),
             );
             $this->db->where('id_dokter', $id_dokter);
             $this->db->update('dokter', $data);
@@ -228,6 +274,10 @@ class Admin extends CI_Controller
         } else {
             $data = array(
                 'nama_dokter' => $this->input->post('nama_dokter'),
+                'jk' => $this->input->post('jk'),
+                'ttl' => $this->input->post('ttl'),
+                'alamat' => $this->input->post('alamat'),
+                'telpon' => $this->input->post('telpon'),
             );
             $this->db->insert('dokter', $data);
             return redirect('admin/dokter');

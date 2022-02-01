@@ -144,7 +144,7 @@ class Auth extends CI_Controller
                 'ttl' => $t_ttl,
                 'alamat' => $this->input->post('alamat'),
                 'telpon' => $this->input->post('telpon'),
-                'status' => "1",
+                'status' => "0",
             );
             $akun = array(
                 'nik' => $this->input->post('no_ktp'),

@@ -16,6 +16,27 @@
                                 <td><input type="text" name="nama_dokter" class="form-control" required placeholder="Nama dokter"></td>
                             </tr>
                             <tr>
+                                <td>Jenis Kelamin</td>
+                                <td><select class="form-control" name="jk">
+                                        <option value="Laki-Laki">Laki-Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select></td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Lahir</td>
+                                <td><input type="date" name="ttl" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Alamat Saat Ini</td>
+                                <td><textarea name="alamat" class="form-control"></textarea></td>
+                            </tr>
+
+                            <tr>
+                                <td>Telpon</td>
+                                <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon"></td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <button class="btn btn-primary">Simpan</button>
                                 </td>

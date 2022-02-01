@@ -20,6 +20,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>
                             <th>Telpon</th>
+                            <th>Hasil</th>
                             <th>aksi</th>
                         </tr>
                     </thead>
@@ -34,6 +35,7 @@
                                 <td><?= $x->jk; ?></td>
                                 <td><?= $x->alamat; ?></td>
                                 <td><?= $x->telpon; ?></td>
+                                <td><?= $x->s; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_vaksin/') . $x->id_warga; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_vaksin/') . $x->id_warga; ?>" class="btn btn-primary">Edit</a>

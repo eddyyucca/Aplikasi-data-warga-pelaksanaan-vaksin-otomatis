@@ -2,22 +2,22 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="m-0 font-weight-bold ">Tabel Data Warga Sudah Melakukan Vaksin</h1>
+            <h1 class="m-0 font-weight-bold ">Data Dokter</h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-
+                    <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Warga</th>
-                            <th>TTL</th>
+                            <th>Nama Dokter</th>
+                            <th>Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
-                            <th>Alamat</th>
                             <th>Telpon</th>
+                            <th>Alamat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,11 +26,12 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
-                                <td><?= $x->nama; ?></td>
+                                <td><?= $x->nama_dokter; ?></td>
                                 <td><?= $x->ttl; ?></td>
                                 <td><?= $x->jk; ?></td>
-                                <td><?= $x->alamat; ?></td>
                                 <td><?= $x->telpon; ?></td>
+                                <td><?= $x->alamat; ?></td>
+
                             </tr>
                         <?php } ?>
                     </tbody>

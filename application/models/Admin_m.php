@@ -55,6 +55,7 @@ class Admin_m extends CI_Model
     {
         return $this->db->get('vaksin')->result();
     }
+
     public function get_all_warga()
     {
         return $this->db->get('warga')->result();
@@ -79,6 +80,12 @@ class Admin_m extends CI_Model
 
         return $this->db->get('dokter')->row();
     }
+    public function get_row_warga($id_warga)
+    {
+        $this->db->where('id_warga', $id_warga);
+
+        return $this->db->get('warga')->row();
+    }
     public function get_status($id_alumni)
     {
 
@@ -97,7 +104,7 @@ class Admin_m extends CI_Model
     public function get_pengajuan()
     {
         $this->db->select('*');
-        $this->db->from('lamaran');
+        $this->db->from('warga');
         $this->db->join('alumni', 'alumni.id_alumni = lamaran.id_alumni');
         $this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
 
