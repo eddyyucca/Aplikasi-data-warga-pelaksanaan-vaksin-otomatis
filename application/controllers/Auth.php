@@ -32,7 +32,7 @@ class Auth extends CI_Controller
 
     public function auth()
     {
-        $this->form_validation->set_rules('telpon', 'Telpon', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE) {
             $data['data'] = false;
@@ -41,9 +41,9 @@ class Auth extends CI_Controller
             $this->load->view('auth/index', $data);
             $this->load->view('auth/template_auth/footer');
         } else {
-            $telpon = $this->input->post('telpon');
+            $nik = $this->input->post('nik');
             $password =  md5($this->input->post('password'));
-            $cek = $this->auth_m->login($telpon, $password);
+            $cek = $this->auth_m->login($nik, $password);
             if ($cek == true) {
                 foreach ($cek as $row);
                 $this->session->set_userdata('telpon', $row->telpon);
