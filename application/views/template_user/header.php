@@ -34,13 +34,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/logo.png'); ?>" width="50" height="60" alt="Logo pemda-tapin">
+            <img src="<?= base_url('assets/logo2.png'); ?>" width="50" height="60" alt="Logo">
           </div>
-          <div class="sidebar-brand-text mx-3">BKK SMK</div>
+          <div class="sidebar-brand-text mx-3">Vaksin</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -70,12 +70,11 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loker" aria-expanded="true" aria-controls="loker">
             <i class="fas fa-database"></i>
-            <span>Lowongan Kerja</span>
+            <span>Pengajuan Vaksin</span>
           </a>
           <div id="loker" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('user/data_lowongan') ?>">Cari Loker</a>
-              <a class="collapse-item" href="<?= base_url('user/status_pengajuan') ?>">Pengajuan Loker</a>
+              <a class="collapse-item" href="<?= base_url('user/daftar_vaksin') ?>">Daftar Vaksin</a>
             </div>
           </div>
         </li>

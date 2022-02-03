@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jan 2022 pada 12.40
+-- Waktu pembuatan: 03 Feb 2022 pada 14.46
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `akun` (
   `id_akun` int(10) NOT NULL,
-  `telpon` varchar(255) NOT NULL,
   `password` text NOT NULL,
   `level` enum('admin','user') NOT NULL,
   `status` varchar(20) NOT NULL,
@@ -40,8 +39,9 @@ CREATE TABLE `akun` (
 -- Dumping data untuk tabel `akun`
 --
 
-INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`, `nik`) VALUES
-(25, '', '52a0aa51a138e8ca1973704486a52961', 'user', 'aktif', '111');
+INSERT INTO `akun` (`id_akun`, `password`, `level`, `status`, `nik`) VALUES
+(27, '4297f44b13955235245b2497399d7a93', 'user', 'aktif', '123456'),
+(28, 'fae0b27c451c728867a567e8c1bb4e53', 'admin', 'aktif', '666');
 
 -- --------------------------------------------------------
 
@@ -51,15 +51,46 @@ INSERT INTO `akun` (`id_akun`, `telpon`, `password`, `level`, `status`, `nik`) V
 
 CREATE TABLE `dokter` (
   `id_dokter` int(11) NOT NULL,
-  `nama_dokter` varchar(255) NOT NULL
+  `nama_dokter` varchar(255) NOT NULL,
+  `ttl` varchar(20) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `telpon` varchar(20) NOT NULL,
+  `jk` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `dokter`
 --
 
-INSERT INTO `dokter` (`id_dokter`, `nama_dokter`) VALUES
-(2, 'dr eddy');
+INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `ttl`, `alamat`, `telpon`, `jk`) VALUES
+(3, 'dr. rahman S.THT a', '2022-02-02', 'assaas aa', '081266666666', 'Laki-Laki');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `hasil`
+--
+
+CREATE TABLE `hasil` (
+  `id_hasil` int(11) NOT NULL,
+  `id_warga` varchar(11) NOT NULL,
+  `dokter` varchar(255) NOT NULL,
+  `vaksin` varchar(255) NOT NULL,
+  `tgl` varchar(50) NOT NULL,
+  `vaksin_ke` varchar(20) NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `hasil`
+--
+
+INSERT INTO `hasil` (`id_hasil`, `id_warga`, `dokter`, `vaksin`, `tgl`, `vaksin_ke`, `keterangan`) VALUES
+(4, '1', 'dr. rahman S.THT a', '1', '2022-02-01', '', 'berhasil'),
+(5, '4', 'dr. rahman S.THT a', '1', '2022-02-03', '1', 'berhasil'),
+(6, '4', 'dr. rahman S.THT a', '4', '2022-02-03', '2', 'berhasil'),
+(7, '4', 'dr. rahman S.THT a', 'Gagal', '2022-02-03', '', 'gagal'),
+(8, '4', 'dr. rahman S.THT a', 'Gagal', '2022-02-03', '', 'gagal');
 
 -- --------------------------------------------------------
 
@@ -68,11 +99,22 @@ INSERT INTO `dokter` (`id_dokter`, `nama_dokter`) VALUES
 --
 
 CREATE TABLE `permintaan_vaksin` (
-  `in_permintaan` int(11) NOT NULL,
+  `id_permintaan` int(11) NOT NULL,
   `id_warga` varchar(11) NOT NULL,
-  `tanggal` varchar(20) NOT NULL,
-  `status_vaksin_hari` varchar(100) NOT NULL
+  `tgl_vaksin` varchar(20) NOT NULL,
+  `no_urut` varchar(100) NOT NULL,
+  `hasil` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `permintaan_vaksin`
+--
+
+INSERT INTO `permintaan_vaksin` (`id_permintaan`, `id_warga`, `tgl_vaksin`, `no_urut`, `hasil`) VALUES
+(1, '4', '2022-02-04', '1', '1'),
+(2, '4', '2022-02-04', '2', '1'),
+(3, '4', '2022-02-05', '1', '1'),
+(4, '4', '2022-02-05', '2', '0');
 
 -- --------------------------------------------------------
 
@@ -92,7 +134,8 @@ CREATE TABLE `vaksin` (
 
 INSERT INTO `vaksin` (`id_vaksin`, `nama_vaksin`, `jumlah`) VALUES
 (1, 'sinovac', '330'),
-(3, 'Moderna', '1000');
+(3, 'Moderna', '1000'),
+(4, 'pfizer', '349');
 
 -- --------------------------------------------------------
 
@@ -105,6 +148,7 @@ CREATE TABLE `warga` (
   `nik` varchar(16) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `ttl` varchar(20) NOT NULL,
+  `tempat` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
   `telpon` varchar(20) NOT NULL,
   `status` text NOT NULL,
@@ -115,9 +159,9 @@ CREATE TABLE `warga` (
 -- Dumping data untuk tabel `warga`
 --
 
-INSERT INTO `warga` (`id_warga`, `nik`, `nama`, `ttl`, `alamat`, `telpon`, `status`, `jk`) VALUES
-(1, '111', 'eddy adha saputra', 'banjarbaru-2022-01-1', 'assaas', '081250653005', '1', 'Laki-Laki'),
-(2, '111', 'asas', 'banjarbaru 2022-01-0', 'a', '081250653005', '2', 'Laki-Laki');
+INSERT INTO `warga` (`id_warga`, `nik`, `nama`, `ttl`, `tempat`, `alamat`, `telpon`, `status`, `jk`) VALUES
+(4, '123456', 'eddy adha saputra', '1997-04-17', 'banjarbaru', 'tapin', '081250653005', 'Gagal', 'Laki-Laki'),
+(5, '666', 'admin', '1997-04-17', 'kandangan', 'TAPIN', '666', 'Gagal', 'Laki-Laki');
 
 --
 -- Indexes for dumped tables
@@ -136,10 +180,16 @@ ALTER TABLE `dokter`
   ADD PRIMARY KEY (`id_dokter`);
 
 --
+-- Indeks untuk tabel `hasil`
+--
+ALTER TABLE `hasil`
+  ADD PRIMARY KEY (`id_hasil`);
+
+--
 -- Indeks untuk tabel `permintaan_vaksin`
 --
 ALTER TABLE `permintaan_vaksin`
-  ADD PRIMARY KEY (`in_permintaan`);
+  ADD PRIMARY KEY (`id_permintaan`);
 
 --
 -- Indeks untuk tabel `vaksin`
@@ -161,31 +211,37 @@ ALTER TABLE `warga`
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `hasil`
+--
+ALTER TABLE `hasil`
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `permintaan_vaksin`
 --
 ALTER TABLE `permintaan_vaksin`
-  MODIFY `in_permintaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_permintaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `vaksin`
 --
 ALTER TABLE `vaksin`
-  MODIFY `id_vaksin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_vaksin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `warga`
 --
 ALTER TABLE `warga`
-  MODIFY `id_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_warga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

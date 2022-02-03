@@ -60,14 +60,27 @@ class Admin_m extends CI_Model
     {
         return $this->db->get('warga')->result();
     }
-    public function get_all_warga_sdh()
+    public function get_all_warga_sdh1()
     {
-        $this->db->where('status', '2');
-        return $this->db->get('warga')->result();
+        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
+        $this->db->where('vaksin_ke', '1');
+        return $this->db->get('hasil')->result();
+    }
+    public function get_all_warga_sdh2()
+    {
+        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
+        $this->db->where('vaksin_ke', '2');
+        return $this->db->get('hasil')->result();
+    }
+    public function get_all_warga_sdh3()
+    {
+        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
+        $this->db->where('vaksin_ke', '3');
+        return $this->db->get('hasil')->result();
     }
     public function get_all_warga_blm()
     {
-        $this->db->where('status', '1');
+        $this->db->where('status', '0');
         return $this->db->get('warga')->result();
     }
     public function get_all_dokter()
@@ -101,30 +114,20 @@ class Admin_m extends CI_Model
         $this->db->where('id_alumni', $id_alumni);
         return $this->db->get('lamaran')->result();
     }
-    public function get_pengajuan()
-    {
-        $this->db->select('*');
-        $this->db->from('warga');
-        $this->db->join('alumni', 'alumni.id_alumni = lamaran.id_alumni');
-        $this->db->join('lowongan', 'lowongan.id_lowongan = lamaran.id_lowongan');
 
-        $this->db->where('lamaran.status_lamaran', "1");
-        $this->db->order_by('lowongan.id_lowongan', 'DESC');
-        return $this->db->get()->result();
-    }
     public function get_row_vaksin($id_vaksin)
     {
         $this->db->where('id_vaksin', $id_vaksin);
         // $this->db->join('jurusan', 'jurusan.id_jurusan = alumni.jurusan_smk');
         return $this->db->get('vaksin')->row();
     }
-    public function get_row_alumni_nip($nip)
+    public function get_all_permintaan($tgl_permintaan)
     {
-        $this->db->where('nip', $nip);
-        $this->db->join('jabatan', 'jabatan.id_jab = alumni.jabatan');
-        $this->db->join('bidang', 'bidang.id_bidang = alumni.bidang');
-
-        return $this->db->get('alumni')->row();
+        $this->db->join('permintaan_vaksin', 'permintaan_vaksin.id_warga = warga.id_warga');
+        $this->db->where('tgl_vaksin', $tgl_permintaan);
+        $this->db->where('hasil', "0");
+        $this->db->order_by('no_urut', 'ASC');
+        return $this->db->get('warga')->result();
     }
 
     public function get_row_alumni2($id_alumni)

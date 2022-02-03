@@ -7,8 +7,8 @@ class Auth_m extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('akun');
-        $this->db->join('alumni', 'alumni.telpon = akun.telpon');
-        $this->db->where('akun.telpon', $telpon);
+        $this->db->join('warga', 'warga.nik = akun.nik');
+        $this->db->where('akun.nik', $telpon);
         $this->db->where('password', $password);
         $this->db->limit(1);
         $query = $this->db->get();

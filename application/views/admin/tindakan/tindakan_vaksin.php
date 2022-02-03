@@ -40,13 +40,23 @@
                     <form action="<?= base_url('admin/hasil_vaksin/' . $data->id_warga)  ?>" method="POST" enctype="multipart/form-data">
                         <table class="table">
                             <tr>
-                                <td width=20%>Vaksin Vaksin</td>
+                                <td width=20%>Vaksin</td>
                                 <td><select name="vaksin" class="form-control">
                                         <option value="">--PILIH VAKSIN--</option>
                                         <option value="Gagal">Gagal Vaksin</option>
                                         <?php foreach ($vaksin as $vak) { ?>
                                             <option value="<?= $vak->id_vaksin ?>"><?= $vak->nama_vaksin ?></option>
                                         <?php } ?>
+                                    </select></td>
+                            </tr>
+                            <tr>
+                                <td width=20%>Vaksin Ke</td>
+                                <td><select name="vaksin_ke" class="form-control">
+                                        <option value="">--PILIH VAKSIN KE--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+
                                     </select></td>
                             </tr>
                             <tr>

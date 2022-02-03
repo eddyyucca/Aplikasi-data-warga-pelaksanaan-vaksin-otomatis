@@ -7,14 +7,21 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_vaksin') ?>" class="btn btn-primary">Tambah Vaksin</a>
-                    <a href="<?= base_url('admin/cetak_data_vaksin') ?>" class="btn btn-primary">Cetak Data Vaksin</a>
+                    <div class="col-4">
+                        <form action="<?= base_url('admin/tindakan')  ?>" method="post">
+                            <input type="date" name="tgl_permintaan" class="form-control">
+                            <br>
+                            <button class="btn btn-primary">Kirim</button>
+                        </form>
+                    </div>
+
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>No Urut</th>
                             <th>Nama Warga</th>
                             <th>TTL</th>
                             <th>Jenis Kelamin</th>
@@ -29,14 +36,15 @@
                         foreach ($data as $x) { ?>
                             <tr>
                                 <td><?= $nomor++; ?></td>
+                                <td><?= $x->no_urut; ?></td>
                                 <td><?= $x->nama; ?></td>
                                 <td><?= $x->ttl; ?></td>
                                 <td><?= $x->jk; ?></td>
                                 <td><?= $x->alamat; ?></td>
                                 <td><?= $x->telpon; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_warga/') . $x->telpon; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-                                    <a href="<?= base_url('admin/edit_warga/') . $x->id_warga; ?>" class="btn btn-primary">Edit</a>
+
+                                    <a href="<?= base_url('admin/tindakan_vaksin/') . $x->id_warga; ?>" class="btn btn-primary">Tindakan</a>
                                 </td>
                             </tr>
                         <?php } ?>

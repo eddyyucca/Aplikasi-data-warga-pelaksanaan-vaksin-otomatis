@@ -32,7 +32,7 @@ class Auth extends CI_Controller
 
     public function auth()
     {
-        $this->form_validation->set_rules('telpon', 'Telpon Alumni', 'required');
+        $this->form_validation->set_rules('telpon', 'Telpon', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE) {
             $data['data'] = false;
@@ -47,8 +47,9 @@ class Auth extends CI_Controller
             if ($cek == true) {
                 foreach ($cek as $row);
                 $this->session->set_userdata('telpon', $row->telpon);
-                $this->session->set_userdata('nama_alumni', $row->nama_alumni);
-                $this->session->set_userdata('id_alumni', $row->id_alumni);
+                $this->session->set_userdata('nama', $row->nama);
+                $this->session->set_userdata('id_warga', $row->id_warga);
+                $this->session->set_userdata('nik', $row->nik);
                 $this->session->set_userdata('level', $row->level);
                 if ($row->level == "admin") {
                     redirect('admin');
@@ -133,15 +134,14 @@ class Auth extends CI_Controller
             $this->load->view('auth/daftar', $data);
             $this->load->view('auth/template_auth/footer');
         } else {
-            $tempat = $this->input->post('tempat');
-            $ttl =  $this->input->post('ttl');
-            $t_ttl = $tempat . " " . $ttl;
+
 
             $data = array(
                 'nik' => $this->input->post('no_ktp'),
                 'nama' => $this->input->post('nama_lengkap'),
                 'jk' => $this->input->post('jk'),
-                'ttl' => $t_ttl,
+                'tempat' => $this->input->post('tempat'),
+                'ttl' => $this->input->post('ttl'),
                 'alamat' => $this->input->post('alamat'),
                 'telpon' => $this->input->post('telpon'),
                 'status' => "0",

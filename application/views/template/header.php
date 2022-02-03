@@ -64,6 +64,7 @@
               <a class="collapse-item" href="<?= base_url('admin/vaksin') ?>">Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/dokter') ?>">Data Dokter</a>
               <a class="collapse-item" href="<?= base_url('admin/warga') ?>">Data Warga</a>
+              <a class="collapse-item" href="<?= base_url('admin/tindakan') ?>">Tindakan Vaksin</a>
             </div>
           </div>
         </li>
@@ -76,9 +77,9 @@
           </a>
           <div id="Pengajuan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin') ?>">Sudah Vaksin 1</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin') ?>">Sudah Vaksin 2</a>
-              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin') ?>">Sudah Vaksin 3</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin1') ?>">Sudah Vaksin 1</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin2') ?>">Sudah Vaksin 2</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin3') ?>">Sudah Vaksin 3</a>
               <a class="collapse-item" href="<?= base_url('admin/warga_blm_vaksin') ?>">Belum Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/cetak_data_vaksin') ?>">Stok Vaksin</a>
             </div>
