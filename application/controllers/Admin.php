@@ -78,7 +78,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/tindakan/tindakan_vaksin', $data);
         $this->load->view('template/footer', $data);
     }
-    public function warga_sdh_vaksin()
+    public function warga_sdh_vaksin1()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['data'] = false;
@@ -87,6 +87,17 @@ class Admin extends CI_Controller
 
         // $this->load->view('template/header', $data);
         $this->load->view('admin/warga/data_warga_sudahvaksin1', $data);
+        // $this->load->view('template/footer', $data);
+    }
+    public function warga_gagal_vaksin()
+    {
+        $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = false;
+        $data['judul'] = 'Dashboard';
+        $data['data'] = $this->admin_m->get_all_warga_gagal();
+
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/warga/data_warga_gagal', $data);
         // $this->load->view('template/footer', $data);
     }
     public function warga_sdh_vaksin2()

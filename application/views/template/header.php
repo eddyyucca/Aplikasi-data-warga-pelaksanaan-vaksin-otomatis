@@ -80,8 +80,10 @@
               <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin1') ?>">Sudah Vaksin 1</a>
               <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin2') ?>">Sudah Vaksin 2</a>
               <a class="collapse-item" href="<?= base_url('admin/warga_sdh_vaksin3') ?>">Sudah Vaksin 3</a>
+              <a class="collapse-item" href="<?= base_url('admin/warga_gagal_vaksin') ?>">Gagal Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/warga_blm_vaksin') ?>">Belum Vaksin</a>
               <a class="collapse-item" href="<?= base_url('admin/cetak_data_vaksin') ?>">Stok Vaksin</a>
+              <a class="collapse-item" href="<?= base_url('admin/cetak_dokter') ?>">Data Dokter</a>
             </div>
           </div>
         </li>

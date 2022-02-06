@@ -66,6 +66,12 @@ class Admin_m extends CI_Model
         $this->db->where('vaksin_ke', '1');
         return $this->db->get('hasil')->result();
     }
+    public function get_all_warga_gagal()
+    {
+        $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
+        $this->db->where('vaksin', 'Gagal');
+        return $this->db->get('hasil')->result();
+    }
     public function get_all_warga_sdh2()
     {
         $this->db->join('warga', 'warga.id_warga = hasil.id_warga');
