@@ -7,9 +7,9 @@
         <div class="card-body">
             <div class="table-responsive">
                 <div class="container">
-                    <a href="<?= base_url('admin/tambah_vaksin') ?>" class="btn btn-primary">Tambah Vaksin</a>
+                    <!-- <a href="<?= base_url('admin/tambah_vaksin') ?>" class="btn btn-primary">Tambah Vaksin</a>
                     <a href="<?= base_url('admin/cetak_data_vaksin') ?>" class="btn btn-primary">Cetak Data Vaksin</a>
-                    <hr>
+                    <hr> -->
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

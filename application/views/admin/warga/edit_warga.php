@@ -18,15 +18,15 @@
                                                 <div class="row">
                                                     <div class="container-fluid">
                                                         <?= validation_errors() ?>
-                                                        <form action="<?= base_url('auth/proses_daftar')  ?>" method="POST" enctype="multipart/form-data">
+                                                        <form action="<?= base_url('admin/proses_edit_warga/') . $data->id_warga  ?>" method="POST" enctype="multipart/form-data">
                                                             <table class="table">
                                                                 <tr>
                                                                     <td width=20%>No KTP</td>
-                                                                    <td><input type="text" name="no_ktp" class="form-control" required placeholder="No KTP" disabled></td>
+                                                                    <td><input type="text" name="no_ktp" value="<?= $data->id_warga ?>" class="form-control" required placeholder="No KTP" disabled></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width=20%>Nama Lengkap</td>
-                                                                    <td><input type="text" name="nama_lengkap" class="form-control" required placeholder="Nama Lengkap"></td>
+                                                                    <td><input type="text" name="nama_lengkap" value="<?= $data->nama ?>" class="form-control" required placeholder="Nama Lengkap"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Jenis Kelamin</td>
@@ -37,18 +37,18 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Tempat/Tanggal/Lahir</td>
-                                                                    <td><input type="text" name="tempat" class="form-control" required placeholder="Tempat">
-                                                                        <input type="date" name="ttl" class="form-control">
+                                                                    <td><input type="text" name="tempat" value="<?= $data->tempat ?>" class="form-control" required placeholder="Tempat">
+                                                                        <input type="date" name="ttl" value="<?= $data->ttl ?>" class="form-control">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Alamat Saat Ini</td>
-                                                                    <td><textarea name="alamat" class="form-control"></textarea></td>
+                                                                    <td><textarea name="alamat" class="form-control"><?= $data->alamat ?></textarea></td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>Telpon</td>
-                                                                    <td><input type="text" name="telpon" class="form-control" required placeholder="Telpon" disabled></td>
+                                                                    <td><input type="text" name="telpon" value="<?= $data->telpon ?>" class="form-control" required placeholder="Telpon" disabled></td>
                                                                 </tr>
                                                                 </tr>
                                                                 <tr>

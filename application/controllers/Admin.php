@@ -442,6 +442,7 @@ class Admin extends CI_Controller
     {
         $data['judul'] = 'Daftar Penerima Vaksin';
         $data['nama'] = $this->session->userdata('nama');
+        $data['data'] = $this->admin_m->get_row_warga($id_warga);
         $this->load->view('template/header', $data);
         $this->load->view('admin/warga/edit_warga', $data);
         $this->load->view('template/footer');
@@ -466,6 +467,26 @@ class Admin extends CI_Controller
         $this->db->where('id_lamaran', $id_lamaran);
         $this->db->update('lamaran', $data);
         redirect("admin/pengajuan_kerja");
+    }
+
+    public function proses_edit_warga($id_warga)
+    {
+        // $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'required|is_unique[warga.nik]');
+        // $this->form_validation->set_rules('telpon', 'Nomor Telpon', 'required|is_unique[warga.telpon]');
+
+        $data = array(
+            // 'nik' => $this->input->post('no_ktp'),
+            'nama' => $this->input->post('nama_lengkap'),
+            'jk' => $this->input->post('jk'),
+            'tempat' => $this->input->post('tempat'),
+            'ttl' => $this->input->post('ttl'),
+            'alamat' => $this->input->post('alamat'),
+            // 'telpon' => $this->input->post('telpon'),
+            // 'status' => "0",
+        );
+        $this->db->where('id_warga', $id_warga);
+        $this->db->update('warga', $data);
+        return redirect('admin/warga');
     }
 }
 
