@@ -17,7 +17,7 @@ class User extends CI_Controller
     }
     public function index()
     {
-        $data['judul'] = 'Dashboard Alumni';
+        $data['judul'] = 'Dashboard';
         $data['nama'] = $this->session->userdata('nama');
         $telpon =  $this->session->userdata('telpon');
         $id_warga =  $this->session->userdata('id_warga');
