@@ -30,7 +30,7 @@ class User extends CI_Controller
     }
     public function daftar_vaksin()
     {
-        $data['judul'] = 'Dashboard Alumni';
+        $data['judul'] = 'Dashboard';
         $data['nama'] = $this->session->userdata('nama');
         $telpon =  $this->session->userdata('telpon');
         $data['data'] = $this->user_m->get_row_warga($telpon);
