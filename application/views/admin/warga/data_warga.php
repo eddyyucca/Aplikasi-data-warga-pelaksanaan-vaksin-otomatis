@@ -35,7 +35,7 @@
                                 <td><?= $x->alamat; ?></td>
                                 <td><?= $x->telpon; ?></td>
                                 <td align="center">
-                                    <a href="<?= base_url('admin/delete_warga/') . $x->telpon; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                    <a href="<?= base_url('admin/delete_warga/') . $x->nik; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/edit_warga/') . $x->id_warga; ?>" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
